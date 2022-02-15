@@ -1,36 +1,11 @@
-const http = require('http');
+const express = require('express');
 
-const hostname = '127.0.0.1';
-const port = 3000;
+const app = express();
 
-const server = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/plain');
-     switch(req.url){
-            case '/':
-              res.end('HanHan Lion Loves Rabbit Baby.');
-              break;
-            case '/about':
-                res.end('hello About Page.');
-                break;
-
-            case '/home':
-                  res.end('welcom to my Homepage.');
-                  break;
-
-            default:
-                    res.end('Not Found!');  
-                  
-
-       }
-
-
+app.get('/',(req,res) =>{
+              res.send('<h1>HanHan Lion Loves Rabbit Baby.</h1>');
 });
-
-server.listen(port, hostname, () => {
-    console.log(`Server running at http://${hostname}:${port}/`);
+             
+app.listen(5000,() => {
+    console.log('app is listening on port 5000');
 });
-
-
- 
-
